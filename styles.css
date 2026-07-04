@@ -1,0 +1,304 @@
+/* ==========================================================================
+   1. Theme Variables & Base Styles (WCAG AA Compliant)
+   ========================================================================== */
+:root {
+  --bg-color: #f8fafc;
+  --card-bg: #ffffff;
+  --text-main: #0f172a; /* Darker slate for improved readability/contrast */
+  --text-muted: #475569; /* Meets contrast ratio requirements for secondary text */
+  --primary: #1d4ed8; /* Slightly deeper blue for optimal contrast ratio (>= 4.5:1) */
+  --primary-hover: #1e40af;
+  --border-color: #cbd5e1; /* Higher visibility border */
+  --border-focus: #2563eb;
+  --focus-ring: rgba(37, 99, 235, 0.2);
+  --error-color: #b91c1c; /* Accessible red for validation messages */
+  --error-bg: #fef2f2;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md:
+    0 4px 12px -2px rgba(15, 23, 42, 0.06),
+    0 2px 6px -1px rgba(15, 23, 42, 0.02);
+  --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Reset & Base Setup */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  line-height: 1.5;
+  padding-block: 2.5rem;
+  padding-inline: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Form Container */
+h1 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  margin-block-end: 1.75rem;
+  text-align: center;
+  color: var(--text-main);
+  letter-spacing: -0.025em;
+}
+
+#form {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  width: 100%;
+  max-width: 600px;
+  padding: 2rem;
+}
+
+/* Divider Styling */
+hr {
+  border: 0;
+  border-top: 1px solid var(--border-color);
+  margin-block: 1.75rem;
+}
+
+/* ==========================================================================
+   2. Fieldset & Grid Layouts (Logical Properties for Internationalization)
+   ========================================================================== */
+fieldset {
+  border: none;
+  margin-block-end: 1.75rem;
+  padding: 0;
+}
+
+/* Responsive Grid for Input Fields */
+#personal-info,
+#product-info {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+@media (min-width: 480px) {
+  #personal-info,
+  #product-info {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Balances the visual weight of single elements in a grid */
+  #product-info div:last-child {
+    grid-column: span 2;
+  }
+}
+
+/* Input Wrappers */
+#personal-info div,
+#product-info div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Legend Styling: Reimagined as a clean section title */
+legend {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-block-end: 1rem;
+  display: block;
+  width: 100%;
+  border-bottom: 1px solid var(--border-color);
+  padding-block-end: 0.5rem;
+}
+
+/* ==========================================================================
+   3. Inputs, Labels & Modern Form Controls
+   ========================================================================== */
+label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+/* Text, Email, Number and Textarea Fields */
+input[type="text"],
+input[type="email"],
+input[type="number"],
+textarea {
+  font-family: inherit;
+  font-size: 0.95rem;
+  padding-block: 0.625rem;
+  padding-inline: 0.875rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background-color: #fff;
+  color: var(--text-main);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  width: 100%;
+  appearance: none; /* Uniform appearance across iOS & Android browsers */
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #64748b; /* Stronger contrast placeholder */
+  opacity: 1; /* Firefox default reset */
+}
+
+/* Keyboard/Mouse Focus States (Accessibility Compliant) */
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
+textarea:focus {
+  outline: 2px solid transparent; /* Fallback for older browsers */
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 4px var(--focus-ring);
+}
+
+/* Standardized browser field validation feedback */
+input:user-invalid,
+textarea:user-invalid {
+  border-color: var(--error-color);
+  background-color: var(--error-bg);
+}
+
+/* Describing Fields (Textareas) */
+textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+/* Blended Container Panels */
+#complaints-group,
+#solutions-group,
+#complaint-description-container,
+#solution-description-container {
+  background-color: var(--bg-color);
+  padding: 1.5rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+}
+
+/* Touch Targets: Custom Hitbox Extensions for Handheld Devices (min 44x44px target) */
+#complaints-group div {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-block-end: 0.75rem;
+}
+
+#complaints-group div:last-child {
+  margin-block-end: 0;
+}
+
+/* Horizontal Radios Grid layout */
+#solutions-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.5rem;
+}
+
+/* Checkboxes and Radios styling */
+input[type="checkbox"],
+input[type="radio"] {
+  accent-color: var(--primary);
+  width: 1.15rem;
+  height: 1.15rem;
+  cursor: pointer;
+  margin-inline-end: 0.75rem;
+  flex-shrink: 0;
+}
+
+/* Extended Touch Area Strategy (increases interactive area without bloating spacing) */
+input[type="checkbox"] + label,
+input[type="radio"] + label {
+  cursor: pointer;
+  user-select: none;
+  font-size: 0.925rem;
+  font-weight: 500;
+  color: var(--text-main);
+  padding-block: 0.5rem; /* Extends vertical hit-box safely */
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Subtly highlighting rows on hover to convey actionability */
+#complaints-group div:hover label {
+  color: var(--primary);
+}
+
+/* ==========================================================================
+   4. Buttons & Dynamic States
+   ========================================================================== */
+#btn-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  margin-block-start: 1.75rem;
+}
+
+#submit-btn {
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: var(--primary);
+  border: none;
+  border-radius: var(--radius-sm);
+  padding-block: 0.875rem;
+  padding-inline: 2.5rem;
+  width: 100%;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 2px 4px rgba(29, 78, 216, 0.15);
+}
+
+#submit-btn:hover {
+  background-color: var(--primary-hover);
+  box-shadow: 0 4px 12px rgba(29, 78, 216, 0.25);
+}
+
+/* High Visibility Focus States for Keyboard Navigation */
+#submit-btn:focus-visible {
+  outline: 3px solid var(--border-focus);
+  outline-offset: 3px;
+}
+
+#submit-btn:active {
+  transform: translateY(1px);
+}
+
+/* Dynamic Notification Message Box styling for dynamic JS integrations */
+#message-box {
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+#message-box.error {
+  color: var(--error-color);
+}
+
+#message-box.success {
+  color: #15803d; /* Accessible green */
+}

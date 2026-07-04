@@ -1,0 +1,167 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Customer Complaint Form</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h1>Complaint Form</h1>
+    <form id="form">
+      <!-- User Personal Info -->
+      <fieldset id="personal-info">
+        <!-- Full Name Input -->
+        <div>
+          <label for="full-name">Full Name:</label>
+          <input
+            type="text"
+            id="full-name"
+            name="full-name"
+            placeholder="John Doe"
+          />
+        </div>
+
+        <!-- Email Address Input -->
+        <div>
+          <label for="email">Email Address:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="example@domain.com"
+          />
+        </div>
+      </fieldset>
+
+      <hr />
+
+      <!-- Product Info -->
+      <fieldset id="product-info">
+        <!-- Order No -->
+        <div>
+          <label for="order-no">Order No:</label>
+          <input
+            type="text"
+            id="order-no"
+            name="order-no"
+            placeholder="2024######"
+          />
+        </div>
+
+        <!-- Product Code -->
+        <div>
+          <label for="product-code">Product Code:</label>
+          <input
+            type="text"
+            id="product-code"
+            name="product-code"
+            placeholder="XX##-X###-XX#"
+          />
+        </div>
+
+        <!-- Product Quantity -->
+        <div>
+          <label for="product-quantity">Quantity:</label>
+          <input type="number" id="quantity" name="quantity" min="1" />
+        </div>
+      </fieldset>
+
+      <!-- Complaints Group -->
+      <fieldset id="complaints-group">
+        <!-- Complaint Reason -->
+        <legend>Complaint Reason:</legend>
+        <!-- Checkboxes -->
+        <!-- Damaged Product Checkbox -->
+        <div>
+          <input
+            type="checkbox"
+            id="damaged-product"
+            name="complaint"
+            value="damaged-product"
+          />
+          <label for="damaged-product">Damaged Product</label>
+        </div>
+
+        <!-- Nonconforming Product Checkbox -->
+        <div>
+          <input
+            type="checkbox"
+            id="nonconforming-product"
+            name="complaint"
+            value="nonconforming-product"
+          />
+          <label for="nonconforming-product">Nonconforming Product</label>
+        </div>
+
+        <!-- Delayed Dispatch Checkbox -->
+        <div>
+          <input
+            type="checkbox"
+            id="delayed-dispatch"
+            name="complaint"
+            value="delayed-dispatch"
+          />
+          <label for="delayed-dispatch">Delayed Dispatch</label>
+        </div>
+
+        <!-- Other Checkbox -->
+        <div>
+          <input type="checkbox" id="other" name="complaint" value="other" />
+          <label for="other">Other</label>
+        </div>
+      </fieldset>
+
+      <!-- Description of Complaint Reason -->
+      <fieldset id="complaint-description-container">
+        <legend>Description of Complaint Reason</legend>
+        <!-- Complaint Description Text Area -->
+        <textarea
+          name="complaint-textarea"
+          id="complaint-description"
+          placeholder="Describe the reason of your complaint in at least 20 characters"
+        ></textarea>
+      </fieldset>
+
+      <!-- Solutions Group -->
+      <fieldset id="solutions-group">
+        <legend>Desired Solution</legend>
+
+        <!-- Refund Solution Radio Input -->
+        <input type="radio" name="solutions" id="refund" value="refund" />
+        <label for="refund">Refund</label>
+
+        <!-- Exchange Solution Radio Input -->
+        <input type="radio" name="solutions" id="exchange" value="exchange" />
+        <label for="exchange">Exchange</label>
+
+        <!-- Other Solution Radio Input -->
+        <input
+          type="radio"
+          name="solutions"
+          id="other-solution"
+          value="other"
+        />
+        <label for="other-solution">Other</label>
+      </fieldset>
+
+      <!-- Description of Desired Solution -->
+      <fieldset id="solution-description-container">
+        <legend>Description of Desired Solution</legend>
+        <!-- Solution Description Text Area -->
+        <textarea
+          name="solution-textarea"
+          id="solution-description"
+          placeholder="Describe the desired solution to your issue in at least 20 characters"
+        ></textarea>
+      </fieldset>
+
+      <!-- Submit Button -->
+      <div id="btn-container">
+        <button type="submit" id="submit-btn">Submit</button>
+        <span id="message-box" aria-live="polite"></span>
+      </div>
+    </form>
+
+    <script src="script.js"></script>
+  </body>
+</html>
