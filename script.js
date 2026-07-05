@@ -17,6 +17,7 @@ const solutionDescriptionFieldset = document.getElementById(
 );
 const submitButton = document.getElementById("submit-btn");
 const form = document.getElementById("form");
+const otherSolution = document.getElementById("other-solution");
 
 function validateForm() {
   const isFullNameValid = fullName.value.trim() !== "";
@@ -24,8 +25,9 @@ function validateForm() {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const orderNoRegex = /^2024\d{6}$/;
   const productCodeRegex = /^[A-Za-z]{2}\d{2}-[A-Za-z]\d{3}-[A-Za-z]{2}\d$/;
-  const otherComplaint = document.getElementById("other");
+  const otherComplaint = document.getElementById("other-complaint");
   const description = complaintDescription.value.trim();
+  const solution = solutionDescription.value.trim();
 
   const isEmailValid = emailRegex.test(email.value.trim());
   const isOrderNoValid = orderNoRegex.test(orderNo.value.trim());
@@ -33,6 +35,10 @@ function validateForm() {
   const isQuantityValid = qty > 0 && Number.isInteger(qty);
 
   let isComplaintsGroupValid = false;
+  let isComplaintDescriptionValid;
+  let isSolutionsGroupValid = false;
+  let isSolutionDescriptionValid;
+
   for (const checkbox of complaintsGroup) {
     if (checkbox.checked) {
       isComplaintsGroupValid = true;
@@ -40,14 +46,12 @@ function validateForm() {
     }
   }
 
-  let isComplaintDescriptionValid;
   if (otherComplaint.checked) {
     isComplaintDescriptionValid = description.length >= 20;
   } else {
     isComplaintDescriptionValid = true;
   }
 
-  let isSolutionsGroupValid = false;
   for (const radio of solutionsGroup) {
     if (radio.checked) {
       isSolutionsGroupValid = true;
@@ -55,9 +59,6 @@ function validateForm() {
     }
   }
 
-  const otherSolution = document.getElementById("other-solution");
-  const solution = solutionDescription.value.trim();
-  let isSolutionDescriptionValid;
   if (otherSolution.checked) {
     isSolutionDescriptionValid = solution.length >= 20;
   } else {
